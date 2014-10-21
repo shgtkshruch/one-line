@@ -1,0 +1,8 @@
+{
+  "name": "hatena",
+  "private": true,
+  "dependencies": {
+    "jquery": "*"
+  },
+  "devDependencies": {}
+}
