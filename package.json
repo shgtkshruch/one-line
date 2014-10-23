@@ -1,22 +1,27 @@
 {
-  "name": "hatena",
+  "name": "one-line",
   "scripts": {
     "publish": "./github-pages.sh"
   },
   "devDependencies": {
-    "gulp": "*",
-    "gulp-jade": "*",
-    "gulp-ruby-sass": "*",
     "browser-sync": "*",
-    "gulp-coffee": "*",
-    "gulp-plumber": "*",
-    "gulp-changed": "*",
-    "gulp-filter": "*",
-    "gulp-useref": "*",
+    "coffee-script": "*",
+    "gulp": "*",
     "gulp-autoprefixer": "*",
+    "gulp-changed": "*",
+    "gulp-coffee": "*",
+    "gulp-filter": "*",
+    "gulp-jade": "*",
     "gulp-load-plugins": "*",
-    "wiredep": "*",
-    "coffee-script": "*"
+    "gulp-plumber": "*",
+    "gulp-ruby-sass": "*",
+    "gulp-useref": "*",
+    "wiredep": "*"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "cheerio": "^0.17.0",
+    "moment": "^2.8.3",
+    "twitter": "^0.2.12"
   }
 }
-
