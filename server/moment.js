@@ -19,3 +19,5 @@ var outputFormat = 'YYYY-MM-DD HH:mm:ss';
 function formatTime(date) {
   return moment(date.time, date.format).format(outputFormat);
 }
+
+module.exports = formatTime;

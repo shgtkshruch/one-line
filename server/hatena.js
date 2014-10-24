@@ -1,6 +1,7 @@
 var http = require('http');
 var cheerio = require('cheerio');
 var url = require('./config.json').hatena.url
+var formatTime = require('./moment.js');
 
 http.get(url, function (res) {
   res.setEncoding('utf-8');
@@ -28,7 +29,8 @@ function perseRss(data) {
     r.link = $(this).find('link').text();
     r.description = $(this).find('description').text();
     r.creator = $(this).find('dc\\:creator').text();
-    r.date = $(this).find('dc\\:date').text();
+    var date = $(this).find('dc\\:date').text();
+    r.date = formatTime({time: date, format: 'YYYY-MM-DD HH:mm:ss Z'})
     r.hatenaBookmarkCount = $(this).find('hatena\\:bookmarkcount').text();
 
     // article body

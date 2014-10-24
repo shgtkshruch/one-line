@@ -1,6 +1,7 @@
 var twitter = require('twitter');
 var http = require('http');
 var async = require('async');
+var formatTime = require('./moment.js');
 var config = require('./config.json').twitter;
 
 var twit = new twitter({
@@ -28,22 +29,24 @@ function getListTimeline (id) {
   }
   twit.get('/lists/statuses.json', options, function(data) {
     async.each(data, function(tw, tweetcb) {
-      abc(tw, tweetcb);
+      perseTweet(tw, tweetcb);
     });
   });
 }
 
-function abc(tw, tweetcb) {
+function perseTweet(tw, tweetcb) {
   var result = {};
   async.series([
     function (done) {
       result.creator = tw.user.name;
       result.body = tw.text;
-      // slice day from date string for moment.js
-      result.date = tw.created_at.slice(4);
       result.retweetCount = tw.retweet_count;
       result.favoriteCount = tw.favorite_count;
       result.rewtweeted = tw.retweeted;
+
+      var date = tw.created_at.slice(4);
+      result.date = formatTime({time: date, format: 'MMM DD HH:mm:ss Z'});
+
       done();
     },
     function (done) {
